@@ -1,24 +1,57 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| name               | string | null: false               |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :orders
 
-* Configuration
 
-* Database creation
+## items テーブル
 
-* Database initialization
+| Column            | Type       | Options                        |
+| ----------------- | ---------- | ------------------------------ |
+| title             | string     | null: false                    |
+| price             | text       | null: false                    |
+| payment_status_id | integer    | null: false                    |
+| user              | references | null: false, foreign_key: true |
 
-* How to run the test suite
+### Association
+- has_many :item_orders
+- belongs_to :user
+- has_many :orders, through: :item_orders
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## item_orders テーブル
 
-* ...
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| item   | references | null: false, foreign_key: true |
+| order  | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :item
+- belongs_to :order
+
+
+## orders テーブル
+
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| payment_amount | integer    | null: false                    |
+| item           | references | null: false, foreign_key: true |
+| user           | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- has_many :item_orders
+- has_many :items, through: :item_orders
