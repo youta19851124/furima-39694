@@ -14,7 +14,6 @@
 | last_name_kana     | string | null: false               |
 
 ### Association
-- belongs_to :address
 - has_many :items
 - has_many :orders
 
@@ -40,18 +39,18 @@
 
 ## addresses テーブル
 
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| zip_code       | string     | null: false                    |
-| prefecture_id  | string     | null: false                    |
-| city           | string     | null: false                    |
-| street         | string     | null: false                    |
-| building_name  | string     |                                |  
-| phone_number   | string     | null: false                    |  
-| order          | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| zip_code         | string     | null: false                    |
+| shipping_area_id | string     | null: false                    |
+| city             | string     | null: false                    |
+| street           | string     | null: false                    |
+| building_name    | string     |                                |  
+| phone_number     | string     | null: false                    |  
+| order            | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user
+- belongs_to :order
 
 
 ## orders テーブル
