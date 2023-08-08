@@ -29,10 +29,20 @@ RSpec.describe User, type: :model do
         expect(user2).not_to be_valid
         expect(user2.errors.full_messages).to include("Email has already been taken")
       end
+      it 'emailに@がないと保存できない' do
+        @user.email = 'testexample.com'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
+      end
       it 'passwordが空では登録できない' do
         @user.password = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Password can't be blank")
+      end
+      it 'passwordに全角文字を含むと保存できない' do
+        @user.password = 'パスワード123'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password must contain at least one letter and one digit")
       end
       it 'passwordとpassword_confirmationが一致しなければ登録できない' do
         @user.password_confirmation = '789tyuf'
