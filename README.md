@@ -28,7 +28,7 @@
 | details                | text       | null: false                    |
 | category_id            | integer    | null: false                    |
 | condition_id           | integer    | null: false                    |
-| shipping_fee_burden_id | integer    | null: false                    |
+| shipping_fee_id        | integer    | null: false                    |
 | shipping_area_id       | integer    | null: false                    |
 | shipping_duration_id   | integer    | null: false                    |
 
