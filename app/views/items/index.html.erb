@@ -144,11 +144,7 @@
               </h3>
               <div class='item-price'>
                 <span><%= item.price %>円<br>
-                  <% if item.shipping_fee_id == 1 %>
-                    送料込み(出品者負担)
-                  <% elsif item.shipping_fee_id == 2%>
-                    着払い(購入者負担)
-                  <% end %>
+                  item.shipping_fee_id.name
                 </span>
                 <div class='star-btn'>
                   <%= image_tag "star.png", class:"star-icon" %>
