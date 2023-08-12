@@ -1,10 +1,10 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category_genre
-  belongs_to :condition_genre
-  belongs_to :shipping_fee_genre
-  belongs_to :shipping_area_genre
-  belongs_to :shipping_duration_genre
+  belongs_to :category_genre, class_name: 'CategoryGenre', foreign_key: :category_id
+  belongs_to :condition_genre, class_name: 'ConditionGenre', foreign_key: :condition_id
+  belongs_to :shipping_fee_genre, class_name: 'ShippingFeeGenre', foreign_key: :shipping_fee_id
+  belongs_to :shipping_area_genre, class_name: 'ShippingAreaGenre', foreign_key: :shipping_area_id
+  belongs_to :shipping_duration_genre, class_name: 'ShippingDurationGenre', foreign_key: :shipping_duration_id
 
   validates :title, presence: true
   validates :price, presence: true,
