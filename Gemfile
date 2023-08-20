@@ -80,7 +80,6 @@ end
 gem 'pry-rails'
 group :production do
   gem 'unicorn', '6.1.0'
-  gem 'pg'
 end
 gem 'devise'
 gem 'mini_magick'
